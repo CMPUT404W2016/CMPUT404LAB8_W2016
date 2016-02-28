@@ -10,7 +10,7 @@ function create() {
   this.client = new Client();
   this.client.openConnection();
   myText = game.add.text(0, 0, "started (not yet connected)", { font: "14px Arial", fill: "#ff0044"});
-  sprite = game.add.sprite(100, 100, "rabbit");
+  sprite = game.add.sprite(0, 0, "rabbit");
   sprite.inputEnabled = true;
   sprite.input.enableDrag(false, true);
   sprite.events.onDragStop.add(rabbitDragged, this);

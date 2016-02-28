@@ -2,12 +2,16 @@
 
 Template Repository for CMPUT 404, Lab 8. Winter 2016.
 
-## GETTING STARTED
+## Getting Started
 
 1. Ensure that `node` and `npm` are installed. Currently tested on 4.2.X but should work with any version of node.
 2. Checkout this repository.
 3. Run `npm install`
 4. Start the application by running `./bin/www`
+
+## Lab Instructions
+
+1. We will be creating a very simple 'tug of war' application, where the bunny is in the middle and the client is controlled by clicking two butons on the left and the right of the screen.
 
 ## LICENSE
 

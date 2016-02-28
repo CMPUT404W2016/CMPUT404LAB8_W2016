@@ -66,7 +66,8 @@ var WebSocketServer = require('ws').Server, wss = new WebSocketServer({port: 808
 
 console.log('Websocket server started on 8080');
 
-var rabbit = {x:0, y:0};
+// Set the rabbit to be the middle of the screen, at with 800/500 proportions
+var rabbit = {x:350, y:200};
 
 wss.on('connection', function(ws) {
   ws.on('message', function(message) {
