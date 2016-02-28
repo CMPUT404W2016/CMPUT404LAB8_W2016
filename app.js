@@ -67,17 +67,28 @@ var WebSocketServer = require('ws').Server, wss = new WebSocketServer({port: 808
 console.log('Websocket server started on 8080');
 
 // Set the rabbit to be the middle of the screen, at with 800/500 proportions
-var rabbit = {x:350, y:200};
+var rabbit = {x:350, y:200, state:'game'};
 
 wss.on('connection', function(ws) {
   ws.on('message', function(message) {
-    var incommingMsg = JSON.parse(message);
-    rabbit.x = incommingMsg.x;
-    rabbit.y = incommingMsg.y;
-    for(var i in wss.clients) {
-      wss.clients[i].send(JSON.stringify(rabbit));
+    if (rabbit['state'] === 'game') {
+      var incommingMsg = JSON.parse(message);
+      if ('clicked' in incommingMsg) {
+        if (incommingMsg['clicked'] === 'left') {
+          rabbit.x -= 5;
+        } else if (incommingMsg['clicked'] === 'right') {
+          rabbit.x += 5;
+        }
+        if (rabbit.x < 100 || rabbit.x > 600) {
+          rabbit['state'] = 'gameOver'
+        } else {
+          rabbit['state'] = 'game';
+        }
+        for(var i in wss.clients) {
+          wss.clients[i].send(JSON.stringify(rabbit));
+        }
+      }
     }
-
   });
   ws.send(JSON.stringify(rabbit));
 });
