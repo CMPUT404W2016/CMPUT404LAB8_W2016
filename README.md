@@ -1,6 +1,10 @@
 # CMPUT404LAB8_W2016
 
 Template Repository for CMPUT 404, Lab 8. Winter 2016.
+* Learn how to use Websockets with a simple phaser.io game
+* Example 1 is a rabbit that can be dragged around the screen
+* 'Completed' is a tug of war style game where the rabbit can be moved from one side to another
+* 'Completed2' is the official lab, a tilemap with player entities that can walk around the map (with collision).
 
 ## GETTING STARTED
 
