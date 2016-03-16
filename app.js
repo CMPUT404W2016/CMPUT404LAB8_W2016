@@ -66,19 +66,18 @@ var WebSocketServer = require('ws').Server, wss = new WebSocketServer({port: 808
 
 console.log('Websocket server started on 8080');
 
-var rabbit = {x:0, y:0};
+var players = {};
 
 wss.on('connection', function(ws) {
   ws.on('message', function(message) {
     var incommingMsg = JSON.parse(message);
-    rabbit.x = incommingMsg.x;
-    rabbit.y = incommingMsg.y;
+    players[incommingMsg.uuid] = {x: incommingMsg.x, y: incommingMsg.y};
+    console.log(JSON.stringify(players));
     for(var i in wss.clients) {
-      wss.clients[i].send(JSON.stringify(rabbit));
+      wss.clients[i].send(JSON.stringify(players));
     }
-
   });
-  ws.send(JSON.stringify(rabbit));
+  ws.send(JSON.stringify(players));
 });
 
 /*
